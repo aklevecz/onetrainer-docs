@@ -7,6 +7,7 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   integrations: [
       starlight({
+		
           title: 'My Docs',
           social: {
               github: 'https://github.com/withastro/starlight',
@@ -28,5 +29,10 @@ export default defineConfig({
 	],
 
   output: 'server',
+  vite: {
+	ssr: {
+		external: ['node:url', 'node:path', 'node:child_process']
+	}
+  },
   adapter: cloudflare(),
 });
